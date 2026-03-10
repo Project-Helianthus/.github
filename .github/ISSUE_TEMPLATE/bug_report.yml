@@ -1,0 +1,55 @@
+name: Bug report
+description: File a reproducible bug with explicit evidence and learning capture.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Include the reproduction path, expected behavior, and actual behavior.
+      placeholder: |
+        Steps:
+        1.
+        2.
+
+        Expected:
+
+        Actual:
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs / artifacts / snapshots
+      description: Paste the relevant evidence. Redact secrets.
+      render: shell
+
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit / environment
+      placeholder: "main @ abc1234 on transport/topology ..."
+
+  - type: input
+    id: canonical_plan
+    attributes:
+      label: Canonical plan
+      description: Link the plan if this bug belongs to a locked workstream.
+      placeholder: "https://github.com/Project-Helianthus/helianthus-execution-plans/..."
+
+  - type: textarea
+    id: knowledge
+    attributes:
+      label: What did we learn?
+      description: Record any new protocol, topology, runtime, or operational knowledge exposed by the bug.
+      placeholder: "If nothing new was learned, say so explicitly."
+
+  - type: checkboxes
+    id: licensing_ack
+    attributes:
+      label: Licensing acknowledgement
+      description: Confirm the licensing model for any material you submit for inclusion in Helianthus.
+      options:
+        - label: I have read LICENSING.md and I accept the Helianthus licensing model for any contribution or reusable material I submit here.
+          required: true

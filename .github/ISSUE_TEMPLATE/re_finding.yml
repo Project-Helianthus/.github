@@ -1,0 +1,69 @@
+name: Reverse-engineering finding
+description: Capture a protocol or register-level finding with evidence, hypothesis, and falsification path.
+labels: ["re-finding"]
+body:
+  - type: input
+    id: protocol
+    attributes:
+      label: Protocol / surface
+      placeholder: "eBUS B524, Portal, MCP, VRC Explorer, ..."
+    validations:
+      required: true
+
+  - type: input
+    id: topology
+    attributes:
+      label: Device / topology
+      placeholder: "controller, adapter path, proxy shape, relevant addresses"
+    validations:
+      required: true
+
+  - type: textarea
+    id: raw_evidence
+    attributes:
+      label: Raw evidence
+      description: Registers, frames, dumps, snapshots, and exact observations.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis
+      description: State the current interpretation. If it is already proven, say why.
+      placeholder: "Hypothesis: ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: falsification
+    attributes:
+      label: Falsification path
+      description: Describe what evidence would disprove the hypothesis.
+      placeholder: "This would be false if ..."
+    validations:
+      required: true
+
+  - type: input
+    id: docs_target
+    attributes:
+      label: Docs target
+      description: Where should the reusable knowledge live in helianthus-docs-ebus?
+      placeholder: "docs/<protocol>/..., api/..., architecture/..."
+
+  - type: input
+    id: canonical_plan
+    attributes:
+      label: Canonical plan
+      description: Link the locked plan if this finding belongs to an active workstream.
+      placeholder: "https://github.com/Project-Helianthus/helianthus-execution-plans/..."
+
+  - type: checkboxes
+    id: licensing_ack
+    attributes:
+      label: Licensing acknowledgement
+      description: Confirm the licensing model for any material you submit for inclusion in Helianthus.
+      options:
+        - label: I have read LICENSING.md and I accept the Helianthus licensing model for any contribution or reusable material I submit here.
+          required: true

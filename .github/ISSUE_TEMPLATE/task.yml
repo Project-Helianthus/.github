@@ -1,0 +1,84 @@
+name: Task
+description: Planned implementation work with explicit proof, docs, and knowledge capture.
+labels: ["task"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What
+      description: One sentence describing what this issue implements.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: Explain how this connects to architecture, rollout, or user value.
+    validations:
+      required: true
+
+  - type: input
+    id: canonical_plan
+    attributes:
+      label: Canonical plan
+      description: Required for cross-repo, milestone, architecture, protocol, or API work.
+      placeholder: "https://github.com/Project-Helianthus/helianthus-execution-plans/..."
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: List specific, testable conditions.
+      value: |
+        - [ ] ...
+        - [ ] Unit tests cover the implemented code
+        - [ ] CI green
+        - [ ] Smoke test required: YES / NO
+    validations:
+      required: true
+
+  - type: input
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Link blocking issues or plans.
+      placeholder: "#123"
+
+  - type: dropdown
+    id: doc_gate
+    attributes:
+      label: Doc-gate
+      description: Does this issue change architecture, API, runtime behavior, or protocol knowledge?
+      options:
+        - "Yes"
+        - "No"
+        - "Unsure"
+    validations:
+      required: true
+
+  - type: textarea
+    id: knowledge_capture
+    attributes:
+      label: Knowledge capture
+      description: What new knowledge is expected and where should it land in helianthus-docs-ebus?
+      placeholder: "Expected docs target, or state why no new knowledge is expected."
+
+  - type: textarea
+    id: proof
+    attributes:
+      label: Proof / Evidence
+      description: Describe the commands, artifacts, logs, or snapshots that will prove this issue complete.
+      placeholder: |
+        Commands:
+        Artifacts:
+        PASS / FAIL gate:
+
+  - type: checkboxes
+    id: licensing_ack
+    attributes:
+      label: Licensing acknowledgement
+      description: Confirm the licensing model for any material you submit for inclusion in Helianthus.
+      options:
+        - label: I have read LICENSING.md and I accept the Helianthus licensing model for any contribution or reusable material I submit here.
+          required: true
