@@ -21,6 +21,13 @@ standard expected from every change.
 - [`helianthus-ha-integration`](https://github.com/Project-Helianthus/helianthus-ha-integration)
 - [`helianthus-ebus-adapter-proxy`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-proxy)
 
+### Firmware And Adapter Runtime
+
+- [`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus):
+  oracle, harness, and bridge contract work for the adapter side
+- [`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic):
+  deterministic PIC16F15356 firmware for eBUS adapter v3.x hardware
+
 ### Reverse Engineering And Docs
 
 - [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer)

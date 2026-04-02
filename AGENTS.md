@@ -20,6 +20,8 @@ The intent is simple:
 | `helianthus-ha-addon` | Home Assistant add-on packaging and operator entry point |
 | `helianthus-ha-integration` | Home Assistant custom integration consuming GraphQL |
 | `helianthus-ebus-adapter-proxy` | adapter fan-out and shared topology helper |
+| `helianthus-tinyebus` | adapter oracle, harness, and TinyGo/ESP8266 bridge track |
+| `helianthus-ebus-adapter-pic` | deterministic PIC16F15356 firmware for the eBUS adapter v3.x hardware |
 | `helianthus-vrc-explorer` | regulator-focused exploration tool useful inside and outside Helianthus |
 | `helianthus-docs-ebus` | canonical public knowledge for architecture, APIs, protocol behavior, and operations |
 | `helianthus-execution-plans` | canonical locked execution plans and the official Discussions venue for adversarial planning |
@@ -31,6 +33,8 @@ flowchart LR
     EG["helianthus-ebusgo<br/>transport + protocol"] --> ER["helianthus-ebusreg<br/>registry + identity"]
     ER --> GW["helianthus-ebusgateway<br/>runtime + GraphQL + MCP + Portal"]
     PX["helianthus-ebus-adapter-proxy<br/>shared adapter topology"] --> GW
+    TE["helianthus-tinyebus<br/>adapter oracle + harness"] --> GW
+    TE --> PIC["helianthus-ebus-adapter-pic<br/>deterministic PIC firmware"]
     GW --> ADDON["helianthus-ha-addon<br/>Home Assistant add-on"]
     GW --> HAI["helianthus-ha-integration<br/>HA custom integration"]
     GW --> PORTAL["Portal / MCP / GraphQL consumers"]
@@ -46,6 +50,8 @@ flowchart LR
     PLANS --> GW
     PLANS --> ADDON
     PLANS --> HAI
+    PLANS --> TE
+    PLANS --> PIC
 ```
 
 ## When A Locked Plan Is Mandatory

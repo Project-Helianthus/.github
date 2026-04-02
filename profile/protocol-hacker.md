@@ -2,7 +2,7 @@
 
 Helianthus intentionally exposes both polished semantic surfaces and rawer
 protocol-facing evidence. If you are exploring undocumented behavior, comparing
-states, or building tooling around eBUS, there are three important surfaces.
+states, or building tooling around eBUS, there are four important surfaces.
 
 ## 1. Helianthus Portal
 
@@ -47,6 +47,20 @@ Use it when you want:
 - CLI-driven B524 discovery workflows
 - a tool that can remain useful even when the rest of the Helianthus stack is
   not in the loop
+
+## 4. Firmware Oracle And PIC Track
+
+[`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus)
+and
+[`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic)
+cover the adapter-side contract below the gateway runtime.
+
+Use them when you want:
+
+- deterministic ENH/ENS oracle output and parity checks
+- host-buildable validation of the adapter runtime contract
+- PIC16F15356 firmware work for eBUS adapter v3.x hardware
+- a clearer split between gateway semantics and adapter-edge behavior
 
 ## Knowledge Capture Rule
 
