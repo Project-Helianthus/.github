@@ -10,6 +10,13 @@ The intent is simple:
 - move reusable knowledge into the docs repo
 - keep repo responsibilities explicit
 
+## Dual-AI Reciprocity
+
+- `ORCHESTRATOR` and `CO_PILOT` are portable roles. The current workspace default is Claude as orchestrator and Codex as co-pilot, but org-wide policy must remain swap-ready.
+- Use the co-pilot only for genuine adversarial/cooperative reasoning work. Do not spend Claude MCP or any equivalent co-pilot runtime on file reads, globs, grep, polling, or routine repository inspection.
+- If the preferred co-pilot is unavailable, throttled, or not integrated, the active orchestrator must fall back to fresh-context agents on the available runtime and keep the same supervision and review contract.
+- When the active runtime is Codex, the workspace-root skills `helianthus-orchestrator-supervision` and `helianthus-review-watch` are the local supervision contract.
+
 ## Repository Map
 
 | Repository | Role |

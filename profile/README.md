@@ -38,7 +38,7 @@ hosts the deterministic PIC16F15356 firmware for eBUS adapter v3.x hardware.
 | [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer) | VRC-focused eBUS exploration tool useful to the wider eBUS and `ebusd` community |
 | [`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus) | adapter oracle, harness, and TinyGo/ESP8266 bridge track for deterministic contract validation |
 | [`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic) | deterministic PIC16F15356 firmware for eBUS adapter v3.x hardware |
-| [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus) | canonical public docs for architecture, protocol knowledge, and API behavior |
+| [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus) | canonical public docs for architecture, protocol knowledge, and API behavior. Key protocol refs: [B524 spec](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/protocols/ebus-vaillant-B524.md), [B524 register map](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/protocols/ebus-vaillant-B524-register-map.md), [Vaillant protocols](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/protocols/ebus-vaillant.md) |
 | [`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans) | canonical locked execution plans and adversarial planning discussions |
 
 ## Planning And Execution
