@@ -1,6 +1,6 @@
 # Project Helianthus
 
-Helianthus is an open HVAC gateway platform built around a protocol-agnostic
+Helianthus is an open Energy gateway platform built around a protocol-agnostic
 semantic core. It separates transport, protocol decoding, registry/identity,
 semantic modeling, and consumer APIs so that new protocol adapters can plug
 into the same platform without forking the rest of the stack.
