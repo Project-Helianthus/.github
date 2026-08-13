@@ -22,12 +22,15 @@ Read-only MODBUS support is being developed through the vendor-neutral
 runtime and multi-vendor
 [`helianthus-modbusreg`](https://github.com/Project-Helianthus/helianthus-modbusreg)
 profile registry. The immediate sequence is Fronius/SunSpec solar-inverter
-support, then Huawei and Growatt inverter/BESS profiles; promoted facts will be
-available to the Vaillant eeBUS path through the
-[`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway).
+support, then Huawei and Growatt inverter/BESS profiles. The
+[`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway)
+performs upstream raw/profile MCP composition; canonical promotion then produces
+the public GraphQL/M2M contract. A separate private eeBUS output binding, when
+introduced, consumes that public contract downstream rather than gateway or
+registry internals.
 The next planned target is Tesla Wall Connector Gen 3 FC100-FC102 MODBUS
-support. It does not yet have a public target repository; its public context is
-the [Fronius-first MODBUS and multi-vendor PV roadmap](https://github.com/Project-Helianthus/helianthus-execution-plans/blob/main/fronius-modbus-multivendor-v3-w29-26.implementing/00-canonical.md).
+support. It does not yet have a public target repository or canonical planning
+artifact.
 Additional profiles can be contributed through the same shared runtime and
 registry boundaries.
 The wider goal is multi-protocol HVAC, EVSE, Solar Inverter, BESS interoperability:
