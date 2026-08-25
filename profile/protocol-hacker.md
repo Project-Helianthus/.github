@@ -1,77 +1,78 @@
 # Protocol Hacker
 
-Helianthus intentionally exposes both polished semantic surfaces and rawer
-protocol-facing evidence. If you are exploring undocumented behavior, comparing
-states, or building tooling around eBUS, there are four important surfaces.
+Helianthus exposes raw protocol evidence alongside semantic projections. eBUS,
+EEBUS, MODBUS/SunSpec, CAN-based integrations, GREE VRF, and future Open Energy
+protocols are equal architectural targets even though their tools and maturity
+differ.
 
-## 1. Helianthus Portal
+## Gateway Portal
 
-The
+The Portal in
 [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway)
-Portal is the native Helianthus UI for investigation and evidence collection.
+is the gateway-native UI for projection, timeline, provenance, snapshot, and
+issue-bundle workflows.
 
-Use it when you want:
+Use it when an investigation depends on live gateway state or needs an
+exportable gateway evidence bundle. Portal replaces selected internal gateway
+workflows only.
 
-- projection and semantic views in one place
-- timeline, provenance, and snapshot workflows
-- issue drafts and export bundles rooted in live gateway evidence
+eBUS Portal reference:
+[`api/portal.md`](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/api/portal.md)
 
-Reference docs:
-- [`api/portal.md`](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/api/portal.md)
+## MCP
 
-## 2. The MCP Endpoint
+The gateway MCP surface is the preferred scriptable path for reproducible
+reads, raw/profile inspection, rapid protocol-native prototyping, and later API
+parity. Preserve raw observations and provenance beside semantic output.
 
-The gateway serves MCP at `/mcp`. This is the preferred scriptable surface for
-agentic investigation, tooling, and rapid iteration before consumer rollout.
+eBUS MCP reference:
+[`api/mcp.md`](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/api/mcp.md)
 
-Use it when you want:
-
-- reproducible scripted reads
-- access to registry, semantic, snapshot, and RPC tools
-- a surface that can be attacked, reviewed, and stabilized before GraphQL parity
-
-Reference docs:
-- [`api/mcp.md`](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/api/mcp.md)
-
-## 3. VRC Explorer
+## VRC Explorer
 
 [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer)
-remains a valid standalone tool for the wider eBUS and `ebusd` community. It is
-not the strategic center of Helianthus, but it remains useful for regulator-
-focused discovery, operator debugging, and community workflows that live outside
-the gateway runtime itself.
+is **not deprecated**. It remains a standalone, community-facing VRC/eBUS and
+`ebusd` exploration tool.
 
-Use it when you want:
+Use it for focused B524 discovery, operator debugging, community workflows, or
+investigations that do not need the Helianthus gateway. A similar Portal
+capability does not turn VRC Explorer into a fallback or legacy-only product.
 
-- a focused VRC exploration tool
-- CLI-driven B524 discovery workflows
-- a tool that can remain useful even when the rest of the Helianthus stack is
-  not in the loop
+## Protocol-Native Tooling
 
-## 4. Firmware Oracle And PIC Track
+- eBUS transport and framing: `helianthus-ebusgo`
+- EEBUS integration and registry: `helianthus-eebus-go` and
+  `helianthus-eebusreg`
+- MODBUS/SunSpec transport and profiles: `helianthus-modbus` and
+  `helianthus-modbusreg`
+- generic CAN/SocketCAN transport and profiles: `helianthus-canbus` and
+  `helianthus-canbusreg`
+- GREE VRF protocol evidence: `helianthus-docs-gree-vrf`
 
-[`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus)
-and
-[`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic)
-cover the adapter-side contract below the gateway runtime.
+`helianthus-ship-go` and `helianthus-spine-go` are temporary upstream
+forks/dependencies used by the EEBUS work. Treat them as integration surfaces,
+not permanent Helianthus-owned products.
 
-Use them when you want:
+`helianthus-ebus-adapter-proxy`, `helianthus-tinyebus`, and
+`helianthus-ebus-adapter-pic` are deprecated. They may be consulted as
+historical topology, oracle, harness, firmware, or validation evidence, but new
+features belong in the active repositories.
 
-- deterministic ENH/ENS oracle output and parity checks
-- host-buildable validation of the adapter runtime contract
-- PIC16F15356 firmware work for eBUS adapter v3.x hardware
-- a clearer split between gateway semantics and adapter-edge behavior
+## Evidence And Knowledge Capture
 
-## Knowledge Capture Rule
+Keep wire/native evidence distinct from implementation behavior. Record exact
+captures, addresses, services/registers, payloads, device context, versions,
+units, timestamps, and uncertainty where applicable. Use `Proven`,
+`Hypothesis`, and `Unknown`.
 
-No matter where you discover new protocol behavior:
+Publish reusable knowledge in the corresponding protocol docs:
 
-- Portal
-- MCP
-- VRC Explorer
-- raw transport/debug work
+- eBUS -> [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus)
+- EEBUS/SHIP/SPINE -> [`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus)
+- MODBUS/SunSpec -> [`helianthus-docs-modbus`](https://github.com/Project-Helianthus/helianthus-docs-modbus)
+- generic CAN/SocketCAN -> [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus)
+- GREE VRF -> [`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf)
+- other protocols -> their own public docs repository or documented public
+  source until one exists
 
-the reusable knowledge belongs in
-[`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus).
-
-The tool is not the canonical home of the knowledge. The docs repo is.
+Do not place every protocol's knowledge in `helianthus-docs-ebus`.

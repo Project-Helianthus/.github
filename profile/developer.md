@@ -1,106 +1,103 @@
 # Developer
 
-Helianthus is developed as a multi-repo platform. The fastest way to get
-productive is to understand the repo map, the planning flow, and the proof
-standard expected from every change.
+Helianthus is a multi-repository Open Energy interoperability platform. Start by
+identifying the protocol-native owner, the current integration boundary, and
+the evidence required for the change.
 
-## Read The Repo Map First
+## Repository Map
 
-### Platform Core
+### Current eBUS Platform
 
 - [`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo):
-  low-level eBUS transport and protocol behavior
+  eBUS transport, framing, protocol primitives, and codecs
 - [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg):
-  registry, identity, and projection model
+  eBUS registry, identity, projection, and current eBUS semantic composition
 - [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway):
-  runtime, GraphQL, MCP, Portal, scans, and state machines
+  current runtime, GraphQL, MCP, Portal, scans, FSMs, and integrated mux
 
-### Operator And Consumer Surfaces
+### Other Protocol Targets
+
+- EEBUS: `helianthus-eebus-go`, `helianthus-eebusreg`, and
+  `helianthus-docs-eebus`
+- MODBUS/SunSpec: `helianthus-modbus`, `helianthus-modbusreg`, and
+  `helianthus-docs-modbus`
+- generic CAN/SocketCAN: `helianthus-canbus`, `helianthus-canbusreg`, and
+  `helianthus-docs-canbus`
+- GREE VRF CAN/UART: `helianthus-docs-gree-vrf`
+- OCPP, Matter, and future energy protocols: equal architectural targets whose
+  repository and maturity status must be verified before work starts
+
+`helianthus-ship-go` and `helianthus-spine-go` are temporary upstream
+forks/dependencies, not permanent Helianthus-owned products.
+
+### Consumer Surfaces
 
 - [`helianthus-ha-addon`](https://github.com/Project-Helianthus/helianthus-ha-addon)
 - [`helianthus-ha-integration`](https://github.com/Project-Helianthus/helianthus-ha-integration)
-- [`helianthus-ebus-adapter-proxy`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-proxy)
+- public GraphQL/M2M contracts exposed by `helianthus-ebusgateway`
 
-### Firmware And Adapter Runtime
+### Planned Semantic Owner
 
-- [`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus):
-  oracle, harness, and bridge contract work for the adapter side
-- [`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic):
-  deterministic PIC16F15356 firmware for eBUS adapter v3.x hardware
+`helianthus-semreg` is the planned future owner of the protocol-neutral
+semantic core. Do not rename `helianthus-ebusreg`,
+`helianthus-ebusgateway`, or another current repository in anticipation of
+that work. Preserve native registries and explicit projection loss.
 
-### Reverse Engineering And Docs
+### Standalone And Deprecated Repositories
 
-- [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer)
-- [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus)
-- [`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans)
+- `helianthus-vrc-explorer` is active, not deprecated, and remains a
+  standalone/community VRC/eBUS and `ebusd` tool
+- `helianthus-ebus-adapter-proxy` is deprecated; new mux work belongs in
+  `helianthus-ebusgateway`
+- `helianthus-tinyebus` and `helianthus-ebus-adapter-pic` are deprecated
+  historical oracle, harness, firmware, and validation references
 
-## When You Must Use The Plans Repo
+## Human-Readable Planning
 
-Start in
+Use
 [`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans)
-when the work is:
+for human-readable guides and planning discussions when work needs cross-
+repository dependencies, milestones, or adversarial design review.
 
-- cross-repo
-- milestone-driven
-- architecture-affecting
-- protocol-affecting
-- API-affecting
-- large enough that it needs adversarial planning and issue decomposition
+A guide is not a lock or runtime. Do not require directory-state renames,
+authorization hashes, claims, TTL/CAS state, attestations, or plan-driven
+automation.
 
-The expected flow is:
+To execute or resume:
 
-1. open a Discussion in `helianthus-execution-plans`
-2. attack the plan with adversarial reviews and deep research
-3. lock the plan into a `slug.locked/` directory
-4. split the plan into issues and milestones in the target repos
-5. rename the directory to `slug.implementing/` once code work begins
-6. move to `slug.maintenance/` after the main implementation wave closes
+1. read the relevant merged guide from `main`
+2. inspect live GitHub issues, branches, PRs, reviews, and checks
+3. reconcile the guide with actual state
+4. create one issue, `issue/<id>-<slug>` branch, and PR per repository in DAG
+   order
+5. stop at the requested boundary
 
-## How To Read A Locked Plan
+Small one-repository changes can begin directly in the target repository.
 
-Each locked or active plan contains:
+## Proof And Review
 
-- `00-canonical.md`: the full canonical source
-- `01-index.md`: the split index and coverage map
-- `10-*.md`: self-contained execution chunks under the token budget
-- `90-issue-map.md`: canonical issue mapping
-- `91-milestone-map.md`: milestone mapping and ordering
-- `99-status.md`: active status, blockers, and next actions
+Every non-trivial claim should include the command, query, capture, or scenario;
+execution context and version/SHA; relevant output or artifact; and an explicit
+verdict.
 
-## Where To Start In The Docs
-
-Start with
-[`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus):
-
-- architecture overview
-- GraphQL contract
-- MCP contract
-- Portal API
-- contributing and doc-gate rules
-
-## Proof Standard
-
-Every non-trivial claim should come with:
-
-- the command, query, or reproduction path
-- the context in which it was run
-- the relevant output or artifact
-- an explicit verdict
-
-Label uncertain statements explicitly:
-
-- `Proven`: backed by current evidence
-- `Hypothesis`: plausible but not yet proven
-- `Unknown`: not established yet
-
-When possible, verification should be idempotent. If a check is not idempotent
-or carries side effects, say so before running it.
+Use `Proven`, `Hypothesis`, and `Unknown`. Review against the exact current
+HEAD, resolve valid P0-P2 findings, run applicable repository validators, and
+report whether the commit and PR are actually remote. Ask before live-system,
+credential, destructive, or similarly high-risk mutations.
 
 ## Knowledge Capture
 
-Any reusable protocol, topology, or runtime knowledge produced by a PR must be
-captured in
-[`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus)
-in the same cycle or in a linked docs PR that is already merged.
+Route reusable knowledge by protocol:
 
-Docs are not an afterthought. They are part of done.
+- eBUS -> [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus)
+- EEBUS/SHIP/SPINE -> [`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus)
+- MODBUS/SunSpec -> [`helianthus-docs-modbus`](https://github.com/Project-Helianthus/helianthus-docs-modbus)
+- generic CAN/SocketCAN -> [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus)
+- GREE VRF -> [`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf)
+- another protocol -> its corresponding public docs repository or documented
+  public source until one exists
+- cross-protocol semantics -> the owning semantic/platform docs, linked back to
+  each native evidence source
+
+Docs are part of done, but `helianthus-docs-ebus` is not a universal protocol
+knowledge store.
