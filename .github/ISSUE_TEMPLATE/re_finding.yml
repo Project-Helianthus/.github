@@ -14,7 +14,7 @@ body:
     id: topology
     attributes:
       label: Device / topology
-      placeholder: "controller, adapter path, proxy shape, relevant addresses"
+      placeholder: "controller, adapter path, mux shape, relevant addresses"
     validations:
       required: true
 
@@ -49,14 +49,14 @@ body:
     id: docs_target
     attributes:
       label: Docs target
-      description: Where should the reusable knowledge live in helianthus-docs-ebus?
-      placeholder: "docs/<protocol>/..., api/..., architecture/..."
+      description: Which corresponding protocol or semantic/platform docs repository and path owns this knowledge?
+      placeholder: "Project-Helianthus/helianthus-docs-<protocol>: path/..."
 
   - type: input
-    id: canonical_plan
+    id: execution_guide
     attributes:
-      label: Canonical plan
-      description: Link the locked plan if this finding belongs to an active workstream.
+      label: Execution guide
+      description: Link the merged human-readable guide if this finding belongs to a guide-backed workstream.
       placeholder: "https://github.com/Project-Helianthus/helianthus-execution-plans/..."
 
   - type: checkboxes
