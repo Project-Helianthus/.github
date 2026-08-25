@@ -32,10 +32,10 @@ body:
       placeholder: "main @ abc1234 on transport/topology ..."
 
   - type: input
-    id: canonical_plan
+    id: execution_guide
     attributes:
-      label: Canonical plan
-      description: Link the plan if this bug belongs to a locked workstream.
+      label: Execution guide
+      description: Link the merged human-readable guide if this bug belongs to a guide-backed workstream.
       placeholder: "https://github.com/Project-Helianthus/helianthus-execution-plans/..."
 
   - type: textarea

@@ -2,10 +2,11 @@
 
 - Closes #
 
-## Canonical Plan
+## Execution Guide
 
-- Required for cross-repo, milestone, architecture, protocol, or API work:
-- Plan:
+- Guide-backed work: link the relevant merged human-readable guide from
+  `helianthus-execution-plans/main`.
+- Guide:
 
 ## Summary
 
@@ -33,7 +34,8 @@ Doc-gate rationale:
 
 ## Knowledge Capture
 
-- [ ] Reusable knowledge was captured in `helianthus-docs-ebus`
+- [ ] Reusable knowledge was captured in the corresponding protocol or
+      semantic/platform docs lane
 - [ ] No new reusable knowledge was produced, with rationale below
 
 Knowledge-capture rationale:

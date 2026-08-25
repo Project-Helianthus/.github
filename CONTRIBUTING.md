@@ -1,21 +1,25 @@
 # Contributing To Project Helianthus
 
 These rules are the default contributor contract for Helianthus repositories.
-Repository-specific instructions may tighten them, but should not weaken them.
+Repository-specific instructions may tighten them.
 
 ## Start With The Right Workstream
 
-Use the
-[`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans)
-repository first when the work is:
+Cross-repository, milestone, architecture, protocol, and API work may use a
+merged human-readable guide from
+[`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans).
+The guide records scope, dependencies, milestones, acceptance criteria, and
+applicable gates. It is not a lock, authorization token, workflow runtime, or
+substitute for current GitHub state.
 
-- cross-repo
-- milestone-driven
-- architecture-changing
-- protocol-changing
-- API-changing
+Before starting or resuming guided work:
 
-Those workstreams should not enter code repos without a locked canonical plan.
+1. read the guide from `main`
+2. inspect current issues, branches, PRs, reviews, and checks
+3. reconcile actual state
+4. proceed one repository at a time in dependency order
+
+Small one-repository changes may start directly in the target repository.
 
 ## Issue Standard
 
@@ -31,7 +35,7 @@ How it connects to architecture, rollout, or user value.
 ## Acceptance Criteria
 - [ ] Specific, testable condition 1
 - [ ] Specific, testable condition 2
-- [ ] Unit tests cover the implemented code
+- [ ] Tests or validators cover the change
 - [ ] CI green
 - [ ] Smoke test required: YES / NO
 
@@ -39,17 +43,23 @@ How it connects to architecture, rollout, or user value.
 - Depends on issue #X (if any)
 ```
 
+Use one issue, one `issue/<id>-<slug>` branch from current `origin/main`, and
+one PR per repository for the active workstream.
+
 ## Pull Request Requirements
 
 Each PR should include:
 
 - the linked issue
-- the canonical plan link when the workstream requires a locked plan
-- commands run
-- relevant evidence or artifacts
-- explicit doc-gate status
-- explicit knowledge-capture status
+- the merged guide link when the workstream is guide-backed
+- commands run and relevant evidence or artifacts
+- explicit test/validation and smoke status
+- explicit doc-gate and knowledge-capture status
 - an explicit `PASS` or `FAIL` verdict
+
+Review is blocker-driven against the exact current HEAD. P0-P2 findings must be
+resolved or independently validated as by-design before merge. P3/P4 findings
+are triaged and do not become blockers merely because they exist.
 
 ## Licensing Boundary
 
@@ -62,44 +72,41 @@ Contributor-facing summary:
   public licensing lane
 - reverse-engineered protocol knowledge belongs in the public-domain lane
 - implementation-specific Helianthus work belongs in the repository OSS lane
-- separate proprietary components around Helianthus may exist, but Helianthus-
-  side merged changes remain public under the applicable repository license
+- separate proprietary components may exist, but Helianthus-side merged changes
+  remain public under the applicable repository license
 
-If the project later adopts repository-specific CLA or copyright-assignment
-terms, they should be added explicitly alongside `LICENSING.md`.
+## Doc-Gate And Knowledge Routing
 
-## Doc-Gate
+Doc-gate is mandatory when a change affects architecture, public or semi-public
+APIs, protocol behavior, semantic behavior, state machines, or reverse-
+engineered knowledge.
 
-Doc-gate is mandatory when a change affects:
+Route knowledge to its owner:
 
-- architecture
-- public or semi-public APIs
-- protocol behavior
-- semantic behavior
-- state machines
-- reverse-engineered knowledge
+- eBUS material -> [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus)
+- EEBUS/SHIP/SPINE material -> [`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus)
+- MODBUS/SunSpec material -> [`helianthus-docs-modbus`](https://github.com/Project-Helianthus/helianthus-docs-modbus)
+- generic CAN/SocketCAN material -> [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus)
+- GREE VRF CAN/UART material -> [`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf)
+- another protocol -> its corresponding public docs repository or documented
+  public source until a dedicated docs repository exists
+- cross-protocol semantics -> the owning semantic/platform documentation, with
+  links to each native evidence source
 
-Reusable knowledge belongs in
-[`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus).
+Do not use `helianthus-docs-ebus` as a universal protocol knowledge store.
 
-## Knowledge-Capture Gate
+Every PR must state one of:
 
-Every PR must answer one of these two statements explicitly:
-
-- `Docs updated`: the PR or a linked merged docs PR captures the new knowledge
+- `Docs updated`: this PR or a linked docs PR captures the new knowledge
 - `No new knowledge captured`: with a short rationale
 
-Reviewers should not accept this implicitly.
+## Statement Quality And Safety
 
-## Statement Quality
+Use `Proven` for current evidence, `Hypothesis` for claims awaiting proof,
+and `Unknown` when not established. Preserve raw/native evidence and explicit
+projection loss.
 
-Prefer precise, falsifiable statements over vague confidence language.
-
-Use:
-
-- `Proven` when backed by evidence in the current change cycle
-- `Hypothesis` when still awaiting proof
-- `Unknown` when not established
-
-When verification is idempotent, prefer idempotent verification. When a step is
-non-idempotent or mutating, declare that before execution.
+Ask for action-time confirmation before credentials, real installations,
+production or live-device mutations, destructive actions, or similarly
+high-risk changes. Ordinary issue, branch, code, docs, test, and PR work needs
+no additional authorization artifact.

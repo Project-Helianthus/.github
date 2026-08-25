@@ -1,94 +1,144 @@
 # Project Helianthus
 
-Helianthus is an open Energy gateway platform built around a protocol-agnostic
-semantic core. It separates transport, protocol decoding, registry/identity,
-semantic modeling, and consumer APIs so that new protocol adapters can plug
-into the same platform without forking the rest of the stack.
+Helianthus is an **Open Energy interoperability platform**: protocol-native
+evidence and capabilities flow into explicit semantic projections and stable
+consumer APIs without being flattened into one favored bus.
 
-Today, eBUS is the active production track and the reference implementation.
-eeBUS support is being built as a native
-[SHIP](https://github.com/Project-Helianthus/helianthus-ship-go) /
-[SPINE](https://github.com/Project-Helianthus/helianthus-spine-go) stack, with
-[`helianthus-eebus-go`](https://github.com/Project-Helianthus/helianthus-eebus-go)
-and [`helianthus-eebusreg`](https://github.com/Project-Helianthus/helianthus-eebusreg),
-and its public knowledge base in
+eBUS, EEBUS, MODBUS/SunSpec, CAN-based energy protocols, GREE VRF, OCPP,
+Matter, and future energy protocols are equal architectural targets. Their
+maturity differs. eBUS is currently the most mature production track and the
+reference implementation for testing shared abstractions; it is not the
+universal semantic owner.
+
+## Current Direction
+
+### eBUS
+
+The active eBUS stack is
+[`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo),
+[`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg),
+and the current gateway runtime,
+[`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway).
+The gateway hosts GraphQL, MCP, Portal, scans, state machines, and the integrated
+adapter mux.
+
+### EEBUS
+
+EEBUS support is developed through
+[`helianthus-eebus-go`](https://github.com/Project-Helianthus/helianthus-eebus-go),
+[`helianthus-eebusreg`](https://github.com/Project-Helianthus/helianthus-eebusreg),
+and
 [`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus).
-For Vaillant hardware, eBUS and eeBUS can coexist without duplicating device
-identities: eBUS exposes substantially richer raw data, while eeBUS more closely
-matches the user-facing myVaillant view.
+[`helianthus-ship-go`](https://github.com/Project-Helianthus/helianthus-ship-go)
+and
+[`helianthus-spine-go`](https://github.com/Project-Helianthus/helianthus-spine-go)
+are temporary forks used as upstream dependencies while integration and
+contribution work converges. They are not permanent Helianthus-owned products.
 
-Read-only MODBUS support is being developed through the vendor-neutral
+### MODBUS And SunSpec
+
+Read-only MODBUS and SunSpec support is developed through the vendor-neutral
 [`helianthus-modbus`](https://github.com/Project-Helianthus/helianthus-modbus)
-runtime and multi-vendor
+runtime and
 [`helianthus-modbusreg`](https://github.com/Project-Helianthus/helianthus-modbusreg)
-profile registry. The immediate sequence is Fronius/SunSpec solar-inverter
-support, then Huawei and Growatt inverter/BESS profiles. The
-[`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway)
-performs upstream raw/profile MCP composition; canonical promotion then produces
-the public GraphQL/M2M contract. A separate private eeBUS output binding, when
-introduced, consumes that public contract downstream rather than gateway or
-registry internals.
-The next planned target is Tesla Wall Connector Gen 3 FC100-FC102 MODBUS
-support. It does not yet have a public target repository or canonical planning
-artifact.
-Additional profiles can be contributed through the same shared runtime and
-registry boundaries.
-The wider goal is multi-protocol HVAC, EVSE, Solar Inverter, BESS interoperability:
-one semantic model, multiple buses, multiple operator surfaces, and reusable
-tooling for reverse engineering and documentation.
+profile registry. Fronius, Huawei, Growatt, and Tesla Wall Connector Gen 3
+FC100-FC102 are target/device lanes with separate evidence and maturity; a
+declared target is not the same as validated support.
 
-The eBUS edge firmware tracks are being deprecated:
-[`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus)
-(adapter oracle, harness, and bridge) and
-[`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic)
-(PIC16F15356 firmware for eBUS adapter v3.x). The legacy
-[`helianthus-ebus-adapter-proxy`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-proxy)
-is also being deprecated: its role is now integrated into the gateway's eBUS
-transport path/runtime mux in
-[`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway),
-which wraps the reusable transports in
-[`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo).
+### CAN And GREE VRF
+
+[`helianthus-canbus`](https://github.com/Project-Helianthus/helianthus-canbus)
+and
+[`helianthus-canbusreg`](https://github.com/Project-Helianthus/helianthus-canbusreg)
+provide the generic CAN/SocketCAN foundation and fail-closed profile registry.
+GREE VRF protocol evidence is kept in
+[`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf).
+Transport availability, a documented protocol, and validated device support are
+reported separately.
+
+### Protocol-Neutral Semantics
+
+`helianthus-semreg` is the planned future owner of the protocol-neutral
+semantic core. It is not a rename of `helianthus-ebusreg` or
+`helianthus-ebusgateway`, and no current repository should be renamed in
+advance of that future work. Native registries retain protocol identity,
+provenance, capabilities, and projection-loss information.
+
+The stable public GraphQL/M2M contract is the consumer boundary. Downstream
+bindings must consume that contract rather than private gateway or registry
+internals.
+
+## Lifecycle Clarity
+
+- [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer)
+  is **not deprecated**. It remains a standalone, community-facing VRC/eBUS and
+  `ebusd` exploration tool. Portal replaces only selected internal gateway
+  workflows.
+- [`helianthus-ebus-adapter-proxy`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-proxy)
+  is deprecated; new mux work belongs in `helianthus-ebusgateway` over
+  `helianthus-ebusgo` transports.
+- [`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus)
+  is a deprecated historical oracle, harness, and bridge reference.
+- [`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic)
+  is a deprecated historical firmware, validation, and oracle reference.
 
 ## Choose Your Path
 
-- [Curious user](./curious-user.md): you want Helianthus running in Home
-  Assistant with the minimum number of moving parts.
-- [Protocol hacker](./protocol-hacker.md): you want to inspect registers, use
-  the MCP surface, script investigations, or work with eBUS tooling directly.
-- [Developer](./developer.md): you want to contribute code, docs, execution
-  plans, and proof-backed changes across the Helianthus repos.
+- [Curious user](./curious-user.md): run the gateway and Home Assistant surfaces
+  without adopting deprecated topology components.
+- [Protocol hacker](./protocol-hacker.md): inspect native evidence with Portal,
+  MCP, VRC Explorer, and protocol-specific tools.
+- [Developer](./developer.md): contribute across current protocol repositories,
+  future semantic boundaries, docs, and human-readable execution guides.
 
 ## Repository Map
 
-| Repository | Purpose |
+| Repository | Status and purpose |
 | --- | --- |
-| [`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo) | eBUS transport, framing, protocol primitives, and low-level reusable codecs |
-| [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg) | registry, identity, projection model, and semantic plumbing |
-| [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway) | main runtime: GraphQL, MCP, Portal, scans, FSMs, API edge, and the integrated eBUS transport mux |
-| [`helianthus-ha-addon`](https://github.com/Project-Helianthus/helianthus-ha-addon) | Home Assistant add-on packaging for the gateway |
-| [`helianthus-ha-integration`](https://github.com/Project-Helianthus/helianthus-ha-integration) | Home Assistant custom integration consuming Helianthus GraphQL |
-| [`helianthus-ebus-adapter-proxy`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-proxy) | deprecated shared proxy; superseded by the integrated gateway eBUS transport mux |
-| [`helianthus-ship-go`](https://github.com/Project-Helianthus/helianthus-ship-go) | native eeBUS SHIP protocol implementation in Go |
-| [`helianthus-spine-go`](https://github.com/Project-Helianthus/helianthus-spine-go) | native eeBUS SPINE protocol implementation in Go |
-| [`helianthus-eebus-go`](https://github.com/Project-Helianthus/helianthus-eebus-go) | eeBUS protocol implementation in Go |
-| [`helianthus-eebusreg`](https://github.com/Project-Helianthus/helianthus-eebusreg) | eeBUS registry and runtime integration layer |
-| [`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus) | canonical public documentation for eeBUS architecture, protocol knowledge, and evidence |
-| [`helianthus-modbus`](https://github.com/Project-Helianthus/helianthus-modbus) | vendor-neutral, read-only MODBUS protocol and transport runtime |
-| [`helianthus-modbusreg`](https://github.com/Project-Helianthus/helianthus-modbusreg) | multi-vendor MODBUS profile registry for detection, observations, and provenance |
-| [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer) | VRC-focused eBUS exploration tool useful to the wider eBUS and `ebusd` community |
-| [`helianthus-ebus-wireshark`](https://github.com/Project-Helianthus/helianthus-ebus-wireshark) | Wireshark Lua dissector for passive ENS and eBUS capture streams |
-| [`helianthus-ebus-extcap`](https://github.com/Project-Helianthus/helianthus-ebus-extcap) | Wireshark extcap client for passive ENS capture through the adapter path |
-| [`helianthus-ebus-vdev`](https://github.com/Project-Helianthus/helianthus-ebus-vdev) | virtual eBUS device emulator for platform development and testing |
-| [`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus) | deprecated adapter oracle, harness, and TinyGo/ESP8266 bridge track |
-| [`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic) | deprecated PIC16F15356 firmware for eBUS adapter v3.x hardware |
-| [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus) | canonical public docs for architecture, protocol knowledge, and API behavior. Key protocol refs: [B524 spec](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/protocols/vaillant/ebus-vaillant-B524.md), [B524 register map](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/protocols/vaillant/ebus-vaillant-B524-register-map.md), [Vaillant protocols](https://github.com/Project-Helianthus/helianthus-docs-ebus/blob/main/protocols/vaillant/ebus-vaillant.md) |
-| [`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans) | human-readable execution guides, planning discussions, and structural plan metadata; it does not authorize or automate code-repository work |
+| [`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo) | Active eBUS transport, framing, protocol primitives, and codecs |
+| [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg) | Active eBUS registry, identity, projection, and current eBUS semantic composition |
+| [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway) | Current gateway runtime, APIs, Portal, state machines, and integrated mux |
+| [`helianthus-ha-addon`](https://github.com/Project-Helianthus/helianthus-ha-addon) | Home Assistant add-on packaging |
+| [`helianthus-ha-integration`](https://github.com/Project-Helianthus/helianthus-ha-integration) | Home Assistant integration consuming the public gateway contract |
+| [`helianthus-eebus-go`](https://github.com/Project-Helianthus/helianthus-eebus-go) | Active EEBUS integration/runtime layer |
+| [`helianthus-eebusreg`](https://github.com/Project-Helianthus/helianthus-eebusreg) | Active EEBUS-native registry and identity |
+| [`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus) | EEBUS-native public documentation and evidence |
+| [`helianthus-ship-go`](https://github.com/Project-Helianthus/helianthus-ship-go) | Temporary upstream SHIP fork/dependency, not a permanent Helianthus product |
+| [`helianthus-spine-go`](https://github.com/Project-Helianthus/helianthus-spine-go) | Temporary upstream SPINE fork/dependency, not a permanent Helianthus product |
+| [`helianthus-modbus`](https://github.com/Project-Helianthus/helianthus-modbus) | Active vendor-neutral MODBUS transport/runtime |
+| [`helianthus-modbusreg`](https://github.com/Project-Helianthus/helianthus-modbusreg) | Active MODBUS/SunSpec and vendor profile registry |
+| [`helianthus-docs-modbus`](https://github.com/Project-Helianthus/helianthus-docs-modbus) | MODBUS/SunSpec-native public documentation and evidence |
+| [`helianthus-canbus`](https://github.com/Project-Helianthus/helianthus-canbus) | Active generic receive-only CAN/SocketCAN transport foundation |
+| [`helianthus-canbusreg`](https://github.com/Project-Helianthus/helianthus-canbusreg) | Active fail-closed CAN profile registry |
+| [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus) | CAN-native public architecture, protocol, and evidence docs |
+| [`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf) | GREE VRF CAN/UART-native public protocol docs |
+| `helianthus-semreg` | Planned future protocol-neutral semantic owner; no current-repository rename |
+| [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer) | Active standalone/community VRC/eBUS and `ebusd` exploration tool |
+| [`helianthus-ebus-wireshark`](https://github.com/Project-Helianthus/helianthus-ebus-wireshark) | eBUS Wireshark dissector |
+| [`helianthus-ebus-extcap`](https://github.com/Project-Helianthus/helianthus-ebus-extcap) | passive ENS capture integration |
+| [`helianthus-ebus-vdev`](https://github.com/Project-Helianthus/helianthus-ebus-vdev) | virtual eBUS device emulator |
+| [`helianthus-ebus-adapter-proxy`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-proxy) | Deprecated historical proxy; superseded by the integrated gateway mux |
+| [`helianthus-tinyebus`](https://github.com/Project-Helianthus/helianthus-tinyebus) | Deprecated historical oracle/harness/bridge reference |
+| [`helianthus-ebus-adapter-pic`](https://github.com/Project-Helianthus/helianthus-ebus-adapter-pic) | Deprecated historical firmware/validation/oracle reference |
+| [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus) | eBUS-native protocol, architecture, API, and evidence docs |
+| [`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans) | Human-readable execution guides, planning discussions, and optional structural metadata |
 
-## Planning And Execution
+## Planning And Knowledge
 
-Cross-repo, milestone, architecture, protocol, and API work is planned in
-[`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans).
-That repository holds the human-readable guides and discussions that define
-scope, dependencies, and applicable gates. Execution reconciles the merged
-guide with current GitHub state; the guide itself neither authorizes nor
-automates work in code repositories.
+Execution guides are human-readable aids. To execute or resume one, read the
+merged guide from `main`, inspect live GitHub issues/branches/PRs/checks, and
+reconcile actual state. A guide does not lock, authorize, rename itself, or run
+workflows in code repositories.
+
+Knowledge goes to the corresponding protocol docs: eBUS to
+[`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus),
+EEBUS/SHIP/SPINE to
+[`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus),
+MODBUS/SunSpec to
+[`helianthus-docs-modbus`](https://github.com/Project-Helianthus/helianthus-docs-modbus),
+generic CAN/SocketCAN to
+[`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus),
+and GREE VRF to
+[`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf).
+Other protocols use their own public docs lane. Cross-protocol semantics must
+link back to each protocol-native evidence source.
