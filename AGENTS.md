@@ -126,8 +126,8 @@ or similarly high-risk changes.
 - Review is blocker-driven and exact-HEAD. Resolve valid P0-P2 findings, then
   run a fresh review against the current HEAD. P3/P4 findings are triaged but
   are nonblocking.
-- Merge only when explicitly requested, all applicable gates are green, and the
-  exact PR HEAD has no blocking findings. Use squash-and-merge.
+- When the current task scope reaches merge, require all applicable gates green
+  and no blocking findings on the exact PR HEAD. Use squash-and-merge.
 - Never infer a new phase or post-merge effect from completion of the previous
   phase.
 
