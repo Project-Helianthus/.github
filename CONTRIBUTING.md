@@ -3,6 +3,11 @@
 These rules are the default contributor contract for Helianthus repositories.
 Repository-specific instructions may tighten them.
 
+The [delivery-role and independent-audit contract](./DELIVERY.md) explains how
+human authority, cross-repository direction, delivery closure, bounded work,
+and independent readiness assessment fit together. It applies equally whether
+one provider or several providers support the work.
+
 ## Start With The Right Workstream
 
 Cross-repository, milestone, architecture, protocol, and API work may use a
