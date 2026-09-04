@@ -114,6 +114,11 @@ or similarly high-risk changes.
 
 ## Development And Review
 
+The public [delivery-role contract](./DELIVERY.md) assigns human authority,
+cross-repository direction, workstream closure, bounded specialist work, and
+independent readiness assessment. It applies equally across provider
+arrangements and keeps tools and skills as capabilities rather than hierarchy.
+
 - Keep at most one active implementation issue and PR per repository for the
   same workstream.
 - Use TDD where it adds evidence for behavior, defects, protocol handling,
