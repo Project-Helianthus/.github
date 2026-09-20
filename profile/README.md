@@ -101,6 +101,9 @@ software evidence.
 
 ## Choose Your Path
 
+- [Anonymous reproducibility](./reproducibility.md): clone, resolve public
+  modules, build, and run the Gateway's offline checks without organization
+  credentials or sibling checkouts.
 - [Curious user](./curious-user.md): run the gateway and Home Assistant surfaces
   without adopting deprecated topology components.
 - [Protocol hacker](./protocol-hacker.md): inspect native evidence with Portal,
