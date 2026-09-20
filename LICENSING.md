@@ -64,13 +64,14 @@ Default project intent:
 Helianthus public repositories are independent open-source software components.
 The repository license file controls each component.
 
-Public Helianthus software includes:
+Public repository ownership covers:
 
-- EEBUS native support and its public output binding;
-- the public Matter output binding;
+- EEBUS native integration and public output-binding work;
+- public Matter output-binding work;
 - SemReg contracts, Gateway composition, and their declared public consumers.
 
-The list identifies software ownership, not implementation maturity. Use the
+The list identifies where public work belongs. It does not claim that an output
+binding is implemented or available. Use the
 [software maturity matrix](./profile/maturity-matrix.md) for current evidence.
 Changes merged into a public Helianthus repository remain governed by that
 repository's public license.
