@@ -3,6 +3,11 @@
 These rules are the default contributor contract for Helianthus repositories.
 Repository-specific instructions may tighten them.
 
+New contributors can start with the [single read-only profile
+demonstration](./profile/first-contribution.md). It links the existing evidence,
+architecture, testing, and ownership guides while keeping this document as the
+contribution contract.
+
 The [delivery-role and independent-audit contract](./DELIVERY.md) explains how
 human authority, cross-repository direction, delivery closure, bounded work,
 and independent readiness assessment fit together. It applies equally whether
