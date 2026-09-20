@@ -149,6 +149,17 @@ software evidence.
 | [`helianthus-docs-ebus`](https://github.com/Project-Helianthus/helianthus-docs-ebus) | eBUS-native protocol, architecture, API, and evidence docs |
 | [`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans) | Human-readable execution guides, planning discussions, and optional structural metadata |
 
+## Licensing And Third-Party Boundaries
+
+Matter and EEBUS software outputs and bindings are public 0.7 software scope;
+they do not depend on private Helianthus hardware. Public software scope remains
+separate from certification, conformance and trademark programs, vendor
+approval, patent rights, and physical validation.
+
+Read [the licensing and contribution boundary](../LICENSING.md) and the
+[source-linked dependency license inventory](../THIRD_PARTY.md). Those documents
+do not change repository licenses or grant rights in third-party material.
+
 ## Planning And Knowledge
 
 Execution guides are human-readable aids. To execute or resume one, read the
