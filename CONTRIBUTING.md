@@ -75,10 +75,17 @@ Contributor-facing summary:
 
 - material merged into Helianthus must be publishable under the applicable
   public licensing lane
-- reverse-engineered protocol knowledge belongs in the public-domain lane
+- only independently recorded protocol facts or derived knowledge that the
+  repository is entitled to publish belongs in the CC0 lane
 - implementation-specific Helianthus work belongs in the repository OSS lane
-- separate proprietary components may exist, but Helianthus-side merged changes
-  remain public under the applicable repository license
+- EEBUS and Matter software outputs and bindings are public 0.7 scope and do not
+  depend on private hardware
+- certification, trademark programs, conformance, patents, vendor approval, and
+  rights in third-party specifications remain separate from software scope
+- this inbound policy is not a contributor license agreement or copyright
+  assignment; no separate public CLA acceptance mechanism is currently verified
+- third-party dependencies keep their own licenses and notices; see
+  [`THIRD_PARTY.md`](./THIRD_PARTY.md)
 
 ## Doc-Gate And Knowledge Routing
 
@@ -92,7 +99,9 @@ Route knowledge to its owner:
 - EEBUS/SHIP/SPINE material -> [`helianthus-docs-eebus`](https://github.com/Project-Helianthus/helianthus-docs-eebus)
 - MODBUS/SunSpec material -> [`helianthus-docs-modbus`](https://github.com/Project-Helianthus/helianthus-docs-modbus)
 - generic CAN/SocketCAN material -> [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus)
-- GREE VRF CAN/UART material -> [`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf)
+- GREE VRF CAN/UART material -> the intended `helianthus-docs-gree-vrf`
+  owner when its public repository is available; current public receive-only
+  replay evidence is in [`helianthus-canbusreg` at `233fd48`](https://github.com/Project-Helianthus/helianthus-canbusreg/commit/233fd48136fa0e5024d87f3676c99990ef0d94b6)
 - another protocol -> its corresponding public docs repository or documented
   public source until a dedicated docs repository exists
 - cross-protocol semantics -> the owning semantic/platform documentation, with
