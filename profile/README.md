@@ -53,8 +53,11 @@ declared target is not the same as validated support.
 and
 [`helianthus-canbusreg`](https://github.com/Project-Helianthus/helianthus-canbusreg)
 provide the generic CAN/SocketCAN foundation and fail-closed profile registry.
-GREE VRF protocol evidence is kept in
-[`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf).
+Public GREE VRF receive-only replay evidence is currently anchored in
+[`helianthus-canbusreg` at `233fd48`](https://github.com/Project-Helianthus/helianthus-canbusreg/commit/233fd48136fa0e5024d87f3676c99990ef0d94b6).
+The intended standalone `helianthus-docs-gree-vrf` destination was not publicly
+available at the PUBLIC-03 inspection baseline, so no public docs-repository
+claim is made here.
 Transport availability, a documented protocol, and validated device support are
 reported separately.
 
@@ -101,6 +104,9 @@ software evidence.
 
 ## Choose Your Path
 
+- [Software maturity matrix](./maturity-matrix.md): compare exact public
+  implementation, semantic, consumer, package, offline-test, and physical
+  evidence without treating one state as proof of another.
 - [Anonymous reproducibility](./reproducibility.md): clone, resolve public
   modules, build, and run the Gateway's offline checks without organization
   credentials or sibling checkouts.
@@ -132,7 +138,7 @@ software evidence.
 | [`helianthus-canbus`](https://github.com/Project-Helianthus/helianthus-canbus) | Active generic receive-only CAN/SocketCAN transport foundation |
 | [`helianthus-canbusreg`](https://github.com/Project-Helianthus/helianthus-canbusreg) | Active fail-closed CAN profile registry |
 | [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus) | CAN-native public architecture, protocol, and evidence docs |
-| [`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf) | GREE VRF CAN/UART-native public protocol docs |
+| `helianthus-docs-gree-vrf` | Intended GREE VRF docs owner; public repository availability **UNKNOWN** at the PUBLIC-03 baseline |
 | [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer) | Active standalone/community VRC/eBUS and `ebusd` exploration tool |
 | [`helianthus-ebus-wireshark`](https://github.com/Project-Helianthus/helianthus-ebus-wireshark) | eBUS Wireshark dissector |
 | [`helianthus-ebus-extcap`](https://github.com/Project-Helianthus/helianthus-ebus-extcap) | passive ENS capture integration |
@@ -158,7 +164,7 @@ MODBUS/SunSpec to
 [`helianthus-docs-modbus`](https://github.com/Project-Helianthus/helianthus-docs-modbus),
 generic CAN/SocketCAN to
 [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus),
-and GREE VRF to
-[`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf).
+and GREE VRF to the intended `helianthus-docs-gree-vrf` owner once that public
+repository is available.
 Other protocols use their own public docs lane. Cross-protocol semantics must
 link back to each protocol-native evidence source.
