@@ -65,11 +65,10 @@ The add-on source at
 also installs VRC Explorer `v0.5.1` from source. That exact release carries
 [GPL-3.0-or-later](https://github.com/Project-Helianthus/helianthus-vrc-explorer/blob/615418cbfcf974d6b8d0b3140abe9e9d627dc3bf/LICENSE).
 Its immutable [`pyproject.toml`](https://github.com/Project-Helianthus/helianthus-vrc-explorer/blob/615418cbfcf974d6b8d0b3140abe9e9d627dc3bf/pyproject.toml)
-declares `httpx>=0.24`, `rich>=13`, `textual>=0.82`, and `typer==0.27.1`.
-Typer `0.27.1` carries [MIT](https://github.com/fastapi/typer/blob/fe2aa0e2f9c853de378e60ca24ec3b256144decf/LICENSE).
-The actual resolved versions and exact license files for the three range-based
-requirements are **unknown** because the package source and inspected add-on
-source contain no Python lock file or built-image SBOM.
+declares `httpx>=0.24`, `rich>=13`, `textual>=0.82`, and `typer>=0.9`.
+The actual resolved versions and exact license files for all four range-based
+requirements are **unknown** because the exact package source and inspected
+add-on source contain no Python lock file or built-image SBOM.
 
 The add-on Dockerfile also names Home Assistant base `3.20`, Go
 `1.26.2-alpine`, and Python `3.12-alpine` images without immutable digests. Their
