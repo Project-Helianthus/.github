@@ -38,7 +38,7 @@ shapes.
 | --- | --- |
 | `helianthus-ebusgo` | eBUS transport, framing, protocol primitives, and reusable codecs |
 | `helianthus-ebusreg` | eBUS-native registry, identity, qualification, and projection |
-| `helianthus-ebusgateway` | runtime composition and public surfaces: GraphQL, MCP, Portal, metrics, scans, driver lifecycle, and integrated adapter mux |
+| `helianthus-ebusgateway` | current runtime composition and scoped public surfaces: GraphQL, MCP, Portal, metrics, scans, and integrated adapter mux; the universal public lifecycle/configuration service remains in progress |
 | `helianthus-semreg` | canonical protocol-neutral semantic contracts, publication kernel, capability packs, and compatibility fixtures |
 | `helianthus-ha-addon` | Home Assistant add-on packaging |
 | `helianthus-ha-integration` | Home Assistant consumer of the public gateway contract |

@@ -19,9 +19,10 @@ The active eBUS stack is
 [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg),
 and the current gateway runtime,
 [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway).
-The native repositories retain eBUS identity and evidence. The gateway composes
-enabled drivers and hosts GraphQL, MCP, Portal, metrics, scans, state machines,
-configuration, lifecycle, and generic contribution hooks.
+The native repositories retain eBUS identity and evidence. The gateway currently
+composes enabled drivers and hosts scoped GraphQL, MCP, Portal, metrics, scans,
+state machines, and accepted read-only contribution slices. Its
+[universal public lifecycle/configuration service is still in progress](https://github.com/Project-Helianthus/helianthus-ebusgateway/blob/5eb53465e88d254455251203e2dc30f813541bba/docs/architecture/runtime-driver-provider-contract-v1.md).
 
 ### EEBUS
 
@@ -113,7 +114,7 @@ software evidence.
 | --- | --- |
 | [`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo) | Active eBUS transport, framing, protocol primitives, and codecs |
 | [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg) | Active eBUS-native registry, identity, qualification, and projection |
-| [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway) | Current runtime composition, public APIs, Portal, metrics, lifecycle, and integrated mux |
+| [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway) | Current runtime composition, scoped public APIs, Portal, metrics, and integrated mux; universal public lifecycle/configuration remains in progress |
 | [`helianthus-semreg`](https://github.com/Project-Helianthus/helianthus-semreg) | Current canonical protocol-neutral semantic contracts, kernel, capability packs, and fixtures |
 | [`helianthus-ha-addon`](https://github.com/Project-Helianthus/helianthus-ha-addon) | Home Assistant add-on packaging |
 | [`helianthus-ha-integration`](https://github.com/Project-Helianthus/helianthus-ha-integration) | Home Assistant integration consuming the public gateway contract |

@@ -13,8 +13,9 @@ the evidence required for the change.
 - [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg):
   eBUS-native registry, identity, qualification, and projection
 - [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway):
-  runtime composition, GraphQL, MCP, Portal, metrics, scans, driver lifecycle,
-  and integrated mux
+  current runtime composition, GraphQL, MCP, Portal, metrics, scans, and the
+  integrated mux; the universal public lifecycle/configuration service remains
+  in progress
 
 ### Other Protocol Targets
 
