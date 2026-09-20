@@ -2,8 +2,8 @@
 
 This path lets a first-time contributor reproduce one existing profile from
 native evidence to public presentation. It uses the Gateway's deterministic
-SunSpec fixture at an immutable public revision. It needs no device, private
-repository, capture, credential, or organization membership.
+SunSpec fixture at an immutable public revision and requires only public source,
+the fixture, and a local development toolchain.
 
 This is a narrow orientation path. The linked [architecture example](https://github.com/Project-Helianthus/helianthus-ebusgateway/blob/33d02f20b706440fbfe4a3ac6f0228507bf51212/docs/examples/sunspec-semreg-pv.md),
 [anonymous reproducibility record](./reproducibility.md), [software maturity

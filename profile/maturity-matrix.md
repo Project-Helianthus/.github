@@ -1,6 +1,6 @@
-# Helianthus 0.7 Software Maturity Matrix
+# Helianthus Software Maturity Matrix
 
-This is the public evidence boundary for the software planned for 0.7. Each
+This is the public evidence boundary for current Helianthus software. Each
 positive state links to an immutable commit. An issue link identifies remaining
 work; it is not implementation evidence. No row inherits maturity from another
 row.
@@ -46,9 +46,9 @@ packaging, installation, certification, conformance, or physical validation.
 | OutBack AXS SunSpec | AXS Port family; exact model **UNKNOWN** | **UNKNOWN** | Read-only observed-state decoder | Baseline pinned by [`ca30533`](https://github.com/Project-Helianthus/helianthus-modbusreg/commit/ca30533ac0bb9d7cf438630c93dbf0f139a94843) | [**IMPLEMENTED**](https://github.com/Project-Helianthus/helianthus-modbusreg/commit/ca30533ac0bb9d7cf438630c93dbf0f139a94843) native decoder seam | **UNKNOWN** | **UNKNOWN** | [**OFFLINE-TESTED**](https://github.com/Project-Helianthus/helianthus-modbusreg/commit/ca30533ac0bb9d7cf438630c93dbf0f139a94843) native path | **UNKNOWN** |
 | Matter output binding | Exact target model **UNKNOWN** | **UNKNOWN** | Protocol-neutral output binding | Planned source anchor is [Matter draft 1.7 ballot 0.9 at `29b4768`](https://github.com/AryaHassanli/connectedhomeip/commit/29b4768a513cf566011ab8cd60df1bc495204953); accepted Gateway inventory at [`5eb5346`](https://github.com/Project-Helianthus/helianthus-ebusgateway/blob/5eb53465e88d254455251203e2dc30f813541bba/docs/architecture/runtime-driver-provider-contract-v1.md) has no composed output | Not implemented in the accepted baseline | SemReg records input-only; output mapping **UNKNOWN** | **UNKNOWN** | **UNKNOWN** | **UNKNOWN** |
 
-EEBUS and Matter software outputs are public 0.7 scope and do not depend on
-private hardware. Their incomplete cells remain unknown until linked public
-evidence exists; public scope does not turn planned work into implementation.
+EEBUS and Matter interface work remains unknown where the rows lack linked
+public evidence; a documented target does not turn planned work into
+implementation.
 
 ## Platform and consumer baselines
 
@@ -61,6 +61,6 @@ evidence exists; public scope does not turn planned work into implementation.
 
 The add-on image name in configuration is not an image digest. A version string,
 merged library change, or successful development build does not establish that
-an installed add-on contains the same source. The exact 0.7 package BOM,
-Daybreak Blue review, T01..T88, and exhaustive dated physical validation remain
-release gates.
+an installed add-on contains the same source. The exact release package BOM,
+applicable security review, T01..T88, and exhaustive dated physical validation
+remain release gates.
