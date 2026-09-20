@@ -40,11 +40,6 @@ without credentials:
 - `helianthus-ship-go` at `v0.6.1-helianthus.18`
 - `helianthus-spine-go` at `v0.7.1-helianthus.9`
 
-EEBUS and Matter software outputs and bindings are public 0.7 scope. Their
-listed or planned presence does not claim complete integration, protocol
-conformance, certification, or physical qualification, and neither depends on
-private Helianthus hardware.
-
 ## Commands and result
 
 The public path is:
@@ -64,12 +59,11 @@ tests, lint with zero findings, Storage and EVSE mapping gates, and the Gateway
 flag smoke check. The exact accepted source revision is
 `ae8bdcd17997586f4bc68b51224d30b1be353acb`.
 
-T01..T88 was **DEFERRED / NOT RUN** under the Board's public-readiness scope
-decision. A repository-owner override allowed this run to continue because the
-only runtime change adds a final caller-cancellation check before an existing
-B503 command emission; it does not change framing, endpoint topology, or
-protocol semantics. T01..T88 remains mandatory against the final 0.7 release
-bill of materials. No unexpected failure or xpass was accepted.
+T01..T88 was **NOT RUN** for this anonymous source-build proof. The only runtime
+change adds a final caller-cancellation check before an existing B503 command
+emission; it does not change framing, endpoint topology, or protocol semantics.
+T01..T88 remains mandatory against the final release-candidate bill of
+materials. No unexpected failure or xpass was accepted.
 
 ## Finding closed during the proof
 

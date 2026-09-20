@@ -83,8 +83,8 @@ Contributor-facing summary:
 - only independently recorded protocol facts or derived knowledge that the
   repository is entitled to publish belongs in the CC0 lane
 - implementation-specific Helianthus work belongs in the repository OSS lane
-- EEBUS and Matter software outputs and bindings are public 0.7 scope and do not
-  depend on private hardware
+- EEBUS and Matter interface contributions follow their owning public
+  repositories and evidence-backed maturity boundaries
 - certification, trademark programs, conformance, patents, vendor approval, and
   rights in third-party specifications remain separate from software scope
 - this inbound policy is not a contributor license agreement or copyright

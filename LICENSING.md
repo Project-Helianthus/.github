@@ -59,32 +59,21 @@ Default project intent:
 - Helianthus-specific implementation work remains OSS under the repository
   license, currently `AGPL-3.0` unless a repository states otherwise
 
-## 3. Public Software And Separate Components
+## 3. Public Software Components
 
 Helianthus public repositories are independent open-source software components.
 The repository license file controls each component.
 
-The following software is part of the public 0.7 scope:
+Public Helianthus software includes:
 
 - EEBUS native support and its public output binding;
 - the public Matter output binding;
 - SemReg contracts, Gateway composition, and their declared public consumers.
 
-EEBUS and Matter software work does not depend on the private Helianthus hardware
-repository. Its public scope does not mean every binding is already implemented,
-packaged, conformant, certified, or physically verified; use the
+The list identifies software ownership, not implementation maturity. Use the
 [software maturity matrix](./profile/maturity-matrix.md) for current evidence.
-
-Separate components may exist around the public software, for example:
-
-- private hardware design;
-- commercial managed services around Helianthus
-- proprietary operational tooling or compliance layers
-
-Those examples do not move public EEBUS or Matter software into a proprietary
-lane. A component remains separate only when its code and rights are actually
-separate. Changes merged into a public Helianthus repository remain governed by
-that repository's public license.
+Changes merged into a public Helianthus repository remain governed by that
+repository's public license.
 
 ## 4. Certification, Trademarks, And Vendor Rights
 
