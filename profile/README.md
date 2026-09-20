@@ -104,6 +104,9 @@ software evidence.
 
 ## Choose Your Path
 
+- [First contribution](./first-contribution.md): reproduce one deterministic
+  read-only SunSpec profile path, see its fail-closed negative case, and find
+  the owning repository for each layer before proposing a change.
 - [Software maturity matrix](./maturity-matrix.md): compare exact public
   implementation, semantic, consumer, package, offline-test, and physical
   evidence without treating one state as proof of another.
