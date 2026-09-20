@@ -26,15 +26,17 @@ newer, and Node.js 20 or newer, matching hosted CI.
 
 ## Public module graph
 
-The anonymous run resolved these Helianthus modules without credentials:
+The anonymous run at Gateway revision
+`ae8bdcd17997586f4bc68b51224d30b1be353acb` resolved these Helianthus modules
+without credentials:
 
-- `helianthus-ebusgo` at `872b442444f2`
-- `helianthus-ebusreg` at `e24532a50caa`
+- `helianthus-ebusgo` at `v0.5.1-0.20260821185245-872b442444f2`
+- `helianthus-ebusreg` at `v0.0.0-20260906140547-e24532a50caa`
 - `helianthus-eebus-go` at `v0.7.1-helianthus.20`
 - `helianthus-eebusreg` at `v0.1.35`
-- `helianthus-modbus` at `f670287d0d86`
-- `helianthus-modbusreg` at `ed75fdfbed0d`
-- `helianthus-semreg` at `089ed6ae9004`
+- `helianthus-modbus` at `v0.3.1-0.20260909115211-f670287d0d86`
+- `helianthus-modbusreg` at `v0.6.8-0.20260905063817-ed75fdfbed0d`
+- `helianthus-semreg` at `v0.0.0-20260911082644-089ed6ae9004`
 - `helianthus-ship-go` at `v0.6.1-helianthus.18`
 - `helianthus-spine-go` at `v0.7.1-helianthus.9`
 
@@ -59,8 +61,8 @@ go run ./cmd/gateway -h
 The accepted anonymous run covered the Portal asset server, Go vet/build and
 Linux 32-bit compilation, the complete race-enabled Go test suite, 224 Python
 tests, lint with zero findings, Storage and EVSE mapping gates, and the Gateway
-flag smoke check. The final accepted revision is recorded in the linked Gateway
-pull request and this document's history.
+flag smoke check. The exact accepted source revision is
+`ae8bdcd17997586f4bc68b51224d30b1be353acb`.
 
 T01..T88 was **DEFERRED / NOT RUN** under the Board's public-readiness scope
 decision. A repository-owner override allowed this run to continue because the
@@ -79,4 +81,3 @@ adds a final check of the original caller context at the emission boundary and
 adds a deterministic regression test. The focused regression and neighboring
 B503 tests passed 25 consecutive race-enabled runs before the full anonymous
 proof was repeated.
-
