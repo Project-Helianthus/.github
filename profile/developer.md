@@ -11,9 +11,11 @@ the evidence required for the change.
 - [`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo):
   eBUS transport, framing, protocol primitives, and codecs
 - [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg):
-  eBUS registry, identity, projection, and current eBUS semantic composition
+  eBUS-native registry, identity, qualification, and projection
 - [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway):
-  current runtime, GraphQL, MCP, Portal, scans, FSMs, and integrated mux
+  current runtime composition, GraphQL, MCP, Portal, metrics, scans, and the
+  integrated mux; the universal public lifecycle/configuration service remains
+  in progress
 
 ### Other Protocol Targets
 
@@ -36,12 +38,15 @@ forks/dependencies, not permanent Helianthus-owned products.
 - [`helianthus-ha-integration`](https://github.com/Project-Helianthus/helianthus-ha-integration)
 - public GraphQL/M2M contracts exposed by `helianthus-ebusgateway`
 
-### Planned Semantic Owner
+### Semantic Owner
 
-`helianthus-semreg` is the planned future owner of the protocol-neutral
-semantic core. Do not rename `helianthus-ebusreg`,
-`helianthus-ebusgateway`, or another current repository in anticipation of
-that work. Preserve native registries and explicit projection loss.
+[`helianthus-semreg`](https://github.com/Project-Helianthus/helianthus-semreg/tree/089ed6ae9004cfba8aff27f1e54d579aeccc0b4c)
+is the current canonical owner of promoted protocol-neutral semantic state. It
+provides versioned contracts, publication behavior, capability packs, and
+compatibility fixtures. Native registries keep protocol identity,
+qualification, raw evidence, and projection-loss inputs; the Gateway composes
+enabled owners and public consumers. Do not move canonical types into the
+Gateway or rename a native registry.
 
 ### Standalone And Deprecated Repositories
 

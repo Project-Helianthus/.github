@@ -19,8 +19,10 @@ The active eBUS stack is
 [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg),
 and the current gateway runtime,
 [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway).
-The gateway hosts GraphQL, MCP, Portal, scans, state machines, and the integrated
-adapter mux.
+The native repositories retain eBUS identity and evidence. The gateway currently
+composes enabled drivers and hosts scoped GraphQL, MCP, Portal, metrics, scans,
+state machines, and accepted read-only contribution slices. Its
+[universal public lifecycle/configuration service is still in progress](https://github.com/Project-Helianthus/helianthus-ebusgateway/blob/5eb53465e88d254455251203e2dc30f813541bba/docs/architecture/runtime-driver-provider-contract-v1.md).
 
 ### EEBUS
 
@@ -58,15 +60,30 @@ reported separately.
 
 ### Protocol-Neutral Semantics
 
-`helianthus-semreg` is the planned future owner of the protocol-neutral
-semantic core. It is not a rename of `helianthus-ebusreg` or
-`helianthus-ebusgateway`, and no current repository should be renamed in
-advance of that future work. Native registries retain protocol identity,
-provenance, capabilities, and projection-loss information.
+[`helianthus-semreg`](https://github.com/Project-Helianthus/helianthus-semreg/blob/089ed6ae9004cfba8aff27f1e54d579aeccc0b4c/README.md)
+is the current separate canonical owner of promoted protocol-neutral semantic
+state. Its accepted v1 kernel and capability packs own versioned publication,
+evaluation, projection, lifecycle, provenance, quality, freshness, and explicit
+projection-loss contracts. Native registries still own protocol identity,
+qualification, decoding, and raw evidence. The Gateway composes those owners
+and exposes enabled contributions through declared MCP, GraphQL, Portal,
+Prometheus, and other consumer bindings; it does not own the canonical semantic
+types.
 
-The stable public GraphQL/M2M contract is the consumer boundary. Downstream
-bindings must consume that contract rather than private gateway or registry
-internals.
+Current public evidence is deliberately narrower than the complete 0.7 target:
+
+| Surface | Evidence-backed status |
+| --- | --- |
+| SemReg core and packs | Implemented and offline-tested at [`089ed6a`](https://github.com/Project-Helianthus/helianthus-semreg/commit/089ed6ae9004cfba8aff27f1e54d579aeccc0b4c); this does not claim physical qualification. |
+| Gateway MCP, M2M GraphQL, and Portal | PV consumes one SemReg publication in [Gateway PR #956](https://github.com/Project-Helianthus/helianthus-ebusgateway/pull/956); Storage and EVSE have accepted domain paths in [PR #959](https://github.com/Project-Helianthus/helianthus-ebusgateway/pull/959) and [PR #962](https://github.com/Project-Helianthus/helianthus-ebusgateway/pull/962). The generic read-only Portal contribution catalog is implemented in [PR #984](https://github.com/Project-Helianthus/helianthus-ebusgateway/pull/984). Other 0.7 domains and complete Portal integration remain in progress. |
+| Prometheus | Bounded PV and Storage output is implemented in [PR #964](https://github.com/Project-Helianthus/helianthus-ebusgateway/pull/964), EVSE in [PR #967](https://github.com/Project-Helianthus/helianthus-ebusgateway/pull/967), and Gateway-owned Modbus/EEBUS runtime status in [PR #978](https://github.com/Project-Helianthus/helianthus-ebusgateway/pull/978). These are offline-validated software paths, not device qualification. |
+| Home Assistant | Read-only SemReg consumers are implemented for PV, Storage, and EVSE in [PR #257](https://github.com/Project-Helianthus/helianthus-ha-integration/pull/257), [PR #261](https://github.com/Project-Helianthus/helianthus-ha-integration/pull/261), and [PR #263](https://github.com/Project-Helianthus/helianthus-ha-integration/pull/263). A merged integration does not prove that a packaged add-on or an installed system contains it. |
+| EEBUS and Matter output bindings | Both are public 0.7 software scope and do not depend on private hardware. EEBUS-native runtime/read surfaces exist, but the protocol-neutral EEBUS output binding remains in progress. SemReg records EEBUS as pending exact standard mapping and Matter as input-only; the accepted Gateway baseline explicitly has [no composed Matter output binding](https://github.com/Project-Helianthus/helianthus-ebusgateway/blob/5eb53465e88d254455251203e2dc30f813541bba/docs/architecture/runtime-driver-provider-contract-v1.md#current-operation-inventory-at-the-pinned-baseline). No conformance or physical-validation claim is made. |
+
+`Implemented` here means present in the linked public revision with repository
+validation. It does not mean packaged, installed, certified, or physically
+verified. In-progress and unknown capabilities remain separate from accepted
+software evidence.
 
 ## Lifecycle Clarity
 
@@ -96,8 +113,9 @@ internals.
 | Repository | Status and purpose |
 | --- | --- |
 | [`helianthus-ebusgo`](https://github.com/Project-Helianthus/helianthus-ebusgo) | Active eBUS transport, framing, protocol primitives, and codecs |
-| [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg) | Active eBUS registry, identity, projection, and current eBUS semantic composition |
-| [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway) | Current gateway runtime, APIs, Portal, state machines, and integrated mux |
+| [`helianthus-ebusreg`](https://github.com/Project-Helianthus/helianthus-ebusreg) | Active eBUS-native registry, identity, qualification, and projection |
+| [`helianthus-ebusgateway`](https://github.com/Project-Helianthus/helianthus-ebusgateway) | Current runtime composition, scoped public APIs, Portal, metrics, and integrated mux; universal public lifecycle/configuration remains in progress |
+| [`helianthus-semreg`](https://github.com/Project-Helianthus/helianthus-semreg) | Current canonical protocol-neutral semantic contracts, kernel, capability packs, and fixtures |
 | [`helianthus-ha-addon`](https://github.com/Project-Helianthus/helianthus-ha-addon) | Home Assistant add-on packaging |
 | [`helianthus-ha-integration`](https://github.com/Project-Helianthus/helianthus-ha-integration) | Home Assistant integration consuming the public gateway contract |
 | [`helianthus-eebus-go`](https://github.com/Project-Helianthus/helianthus-eebus-go) | Active EEBUS integration/runtime layer |
@@ -112,7 +130,6 @@ internals.
 | [`helianthus-canbusreg`](https://github.com/Project-Helianthus/helianthus-canbusreg) | Active fail-closed CAN profile registry |
 | [`helianthus-docs-canbus`](https://github.com/Project-Helianthus/helianthus-docs-canbus) | CAN-native public architecture, protocol, and evidence docs |
 | [`helianthus-docs-gree-vrf`](https://github.com/Project-Helianthus/helianthus-docs-gree-vrf) | GREE VRF CAN/UART-native public protocol docs |
-| `helianthus-semreg` | Planned future protocol-neutral semantic owner; no current-repository rename |
 | [`helianthus-vrc-explorer`](https://github.com/Project-Helianthus/helianthus-vrc-explorer) | Active standalone/community VRC/eBUS and `ebusd` exploration tool |
 | [`helianthus-ebus-wireshark`](https://github.com/Project-Helianthus/helianthus-ebus-wireshark) | eBUS Wireshark dissector |
 | [`helianthus-ebus-extcap`](https://github.com/Project-Helianthus/helianthus-ebus-extcap) | passive ENS capture integration |

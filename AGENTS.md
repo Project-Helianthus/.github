@@ -18,10 +18,11 @@ Keep these boundaries explicit:
 - protocol-native transport, identity, evidence, and capabilities remain owned
   by the corresponding protocol repositories
 - the current eBUS runtime repository is named `helianthus-ebusgateway`
-- `helianthus-ebusreg` remains the current eBUS registry and projection
-  repository
-- `helianthus-semreg` is the planned future owner of the protocol-neutral
-  semantic core; it does not replace or rename an existing repository today
+- `helianthus-ebusreg` remains the eBUS-native registry, identity, and
+  projection repository
+- `helianthus-semreg` is the current canonical owner of promoted
+  protocol-neutral semantic state; it is separate from the Gateway and does not
+  replace or rename a native registry
 - consumers use stable public contracts and must not erase native evidence or
   silently hide projection loss
 
@@ -36,8 +37,9 @@ shapes.
 | Repository | Role |
 | --- | --- |
 | `helianthus-ebusgo` | eBUS transport, framing, protocol primitives, and reusable codecs |
-| `helianthus-ebusreg` | eBUS registry, identity, projection, and current eBUS semantic composition |
-| `helianthus-ebusgateway` | current gateway runtime: GraphQL, MCP, Portal, scans, FSMs, and integrated adapter mux |
+| `helianthus-ebusreg` | eBUS-native registry, identity, qualification, and projection |
+| `helianthus-ebusgateway` | current runtime composition and scoped public surfaces: GraphQL, MCP, Portal, metrics, scans, and integrated adapter mux; the universal public lifecycle/configuration service remains in progress |
+| `helianthus-semreg` | canonical protocol-neutral semantic contracts, publication kernel, capability packs, and compatibility fixtures |
 | `helianthus-ha-addon` | Home Assistant add-on packaging |
 | `helianthus-ha-integration` | Home Assistant consumer of the public gateway contract |
 | `helianthus-docs-ebus` | eBUS-native protocol, architecture, API, and evidence documentation |
