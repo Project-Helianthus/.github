@@ -3,6 +3,6 @@ contact_links:
   - name: Organization profile
     url: https://github.com/Project-Helianthus/.github/tree/main/profile
     about: Start with the public onboarding pages for users, protocol hackers, and developers.
-  - name: Locked execution plans
-    url: https://github.com/Project-Helianthus/helianthus-execution-plans
-    about: Use the plans repo for cross-repo, milestone, architecture, protocol, and API workstreams.
+  - name: Organization repositories and issues
+    url: https://github.com/orgs/Project-Helianthus/repositories
+    about: Find the owning repository and its issues for planning work.

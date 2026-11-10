@@ -59,20 +59,20 @@ Gateway or rename a native registry.
 
 ## Human-Readable Planning
 
-Use
-[`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans)
-for human-readable guides and planning discussions when work needs cross-
-repository dependencies, milestones, or adversarial design review.
+Use the owning repository issue and the GitHub Project for the release for
+scope, cross-repository dependencies, milestones, and review. For release 0.7,
+use the [release project](https://github.com/orgs/Project-Helianthus/projects/2).
+Find repository issues through the [organization repositories](https://github.com/orgs/Project-Helianthus/repositories).
 
-A guide is not a lock or runtime. Do not require directory-state renames,
+Plans remain human-readable and inert. Do not require directory-state renames,
 authorization hashes, claims, TTL/CAS state, attestations, or plan-driven
 automation.
 
 To execute or resume:
 
-1. read the relevant merged guide from `main`
+1. read the owning repository issue and applicable release project
 2. inspect live GitHub issues, branches, PRs, reviews, and checks
-3. reconcile the guide with actual state
+3. reconcile the issue and project with actual state
 4. create one issue, `issue/<id>-<slug>` branch, and PR per repository in DAG
    order
 5. stop at the requested boundary

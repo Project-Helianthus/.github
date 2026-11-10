@@ -85,10 +85,9 @@ replacement when one exists.
 
 ## Human-Readable Planning
 
-`helianthus-execution-plans` holds human-readable Markdown guides and planning
-discussions for work that benefits from cross-repository decomposition. A small
-read-only YAML companion may describe objective, repositories, DAG edges,
-milestones, acceptance criteria, and applicable gates.
+Planning lives in the owning repository issues and the GitHub Project for each
+release. For release 0.7, use the [release project](https://github.com/orgs/Project-Helianthus/projects/2).
+Issues record scope, dependencies, milestones, acceptance criteria, and gates.
 
 Plans are guides, not authorization or workflow runtimes. Do not create or
 require:
@@ -101,9 +100,9 @@ require:
 
 For execution or resume:
 
-1. read the relevant merged guide from `main`
+1. read the owning repository issue and applicable release project
 2. inspect current GitHub issues, branches, PRs, reviews, and checks
-3. reconcile the guide with that live state
+3. reconcile the issue and project with that live state
 4. create one issue, `issue/<id>-<slug>` branch, and PR per repository in DAG
    order
 5. stop at the operator-requested repository, PR, merge, or sensitive-mutation

@@ -32,11 +32,11 @@ body:
       placeholder: "main @ abc1234 on transport/topology ..."
 
   - type: input
-    id: execution_guide
+    id: owning_issue
     attributes:
-      label: Execution guide
-      description: Link the merged human-readable guide if this bug belongs to a guide-backed workstream.
-      placeholder: "https://github.com/Project-Helianthus/helianthus-execution-plans/..."
+      label: Owning repository issue
+      description: Link the owning repository issue when this bug belongs to another workstream.
+      placeholder: "https://github.com/Project-Helianthus/<repository>/issues/<number>"
 
   - type: textarea
     id: knowledge
