@@ -19,11 +19,11 @@ body:
       required: true
 
   - type: input
-    id: execution_guide
+    id: owning_issue
     attributes:
-      label: Execution guide
-      description: Link the relevant merged human-readable guide when this workstream is guide-backed.
-      placeholder: "https://github.com/Project-Helianthus/helianthus-execution-plans/..."
+      label: Owning repository issue
+      description: Link the owning repository issue when this task is part of a larger workstream.
+      placeholder: "https://github.com/Project-Helianthus/<repository>/issues/<number>"
 
   - type: textarea
     id: acceptance
@@ -42,7 +42,7 @@ body:
     id: dependencies
     attributes:
       label: Dependencies
-      description: Link blocking issues or execution guides.
+      description: Link blocking issues.
       placeholder: "#123"
 
   - type: dropdown

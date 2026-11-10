@@ -15,16 +15,16 @@ one provider or several providers support the work.
 
 ## Start With The Right Workstream
 
-Cross-repository, milestone, architecture, protocol, and API work may use a
-merged human-readable guide from
-[`helianthus-execution-plans`](https://github.com/Project-Helianthus/helianthus-execution-plans).
-The guide records scope, dependencies, milestones, acceptance criteria, and
-applicable gates. It is not a lock, authorization token, workflow runtime, or
-substitute for current GitHub state.
+Use the owning repository issue and the GitHub Project for the release to
+record scope, dependencies, milestones, acceptance criteria, and applicable
+gates. For release 0.7, use the [release project](https://github.com/orgs/Project-Helianthus/projects/2).
+Plans remain human-readable and inert; they are not authorization tokens or
+workflow runtimes. Find work in the [organization repositories](https://github.com/orgs/Project-Helianthus/repositories)
+and their issues.
 
-Before starting or resuming guided work:
+Before starting or resuming work:
 
-1. read the guide from `main`
+1. read the owning issue and applicable release project
 2. inspect current issues, branches, PRs, reviews, and checks
 3. reconcile actual state
 4. proceed one repository at a time in dependency order
@@ -61,7 +61,7 @@ one PR per repository for the active workstream.
 Each PR should include:
 
 - the linked issue
-- the merged guide link when the workstream is guide-backed
+- dependencies and documentation impact
 - commands run and relevant evidence or artifacts
 - explicit test/validation and smoke status
 - explicit doc-gate and knowledge-capture status

@@ -2,15 +2,15 @@
 
 - Closes #
 
-## Execution Guide
+## Planning And Dependencies
 
-- Guide-backed work: link the relevant merged human-readable guide from
-  `helianthus-execution-plans/main`.
-- Guide:
+- Owning repository issue:
+- Dependencies:
+- Documentation impact:
 
 ## Summary
 
-- 
+-
 
 ## Commands Run
 
